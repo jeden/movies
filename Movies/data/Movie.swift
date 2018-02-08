@@ -24,10 +24,10 @@ struct Movie : Decodable {
     var cardImages: [CardImage]
     var synopsis: String
     var starred = false
-    //var viewingWindow: ViewingWindow
+    var viewingWindow: ViewingWindow?
 
-    var releaseDate: Date { return Date() }
+    var releaseDate: Date { return self.viewingWindow?.startDate ?? Date.distantPast}
     var imageUrl: String? { return self.cardImages.first?.url }
 
-    private enum CodingKeys : CodingKey { case id, headline, cardImages, synopsis }
+    private enum CodingKeys : CodingKey { case id, headline, cardImages, synopsis, viewingWindow }
 }

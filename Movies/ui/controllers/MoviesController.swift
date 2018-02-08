@@ -32,6 +32,13 @@ final class MoviesController : UITableViewController {
             }
         }
     }
+
+    // Note: implemented an in place raw sort. A better  solution is to keep the original unsorted list
+    // and give the ability to sort ascending/descending, as well as return to the unsorted list
+    @IBAction func didTapSort(_ sender: Any) {
+        self.movies.sort { $0.releaseDate > $1.releaseDate }
+        self.tableView.reloadData()
+    }
 }
 
 // MARK: UITableViewDataSource

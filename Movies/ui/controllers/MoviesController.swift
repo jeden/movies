@@ -39,6 +39,14 @@ final class MoviesController : UITableViewController {
         self.movies.sort { $0.releaseDate > $1.releaseDate }
         self.tableView.reloadData()
     }
+
+    // Note: this implementation is destructive, meaning that the original list is replaced with
+    // the filtered one. A better solution is to keep the original list, and give the ability to the user
+    // to get back to the unfiltered list
+    @IBAction func didTapFavorites(_ sender: Any) {
+        self.movies = self.movies.filter { $0.starred == true }
+        self.tableView.reloadData()
+    }
 }
 
 // MARK: UITableViewDataSource

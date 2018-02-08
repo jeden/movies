@@ -23,8 +23,11 @@ struct Movie : Decodable {
     var headline: String
     var cardImages: [CardImage]
     var synopsis: String
+    var starred = false
     //var viewingWindow: ViewingWindow
 
     var releaseDate: Date { return Date() }
     var imageUrl: String? { return self.cardImages.first?.url }
+
+    private enum CodingKeys : CodingKey { case id, headline, cardImages, synopsis }
 }

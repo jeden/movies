@@ -58,7 +58,13 @@ extension MoviesController {
 }
 
 extension MoviesController : MovieCellDelegate {
-    func moveCellDidTapReadMore(_ cell: MovieCell) {
+    func movieCellDidTapStar(_ cell: MovieCell) {
+        let index = cell.indexPath.row
+        self.movies[index].starred = !self.movies[index].starred
+        cell.configure(with: self.movies[index], indexPath: cell.indexPath, delegate: self)
+    }
+
+    func movieCellDidTapReadMore(_ cell: MovieCell) {
         if let expandedMovieIndex = self.expandedMovieIndex {
             let indexPath = IndexPath(row: expandedMovieIndex, section: 0)
             self.expandedMovieIndex = nil

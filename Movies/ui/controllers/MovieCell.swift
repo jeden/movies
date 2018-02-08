@@ -10,7 +10,8 @@ import UIKit
 import SDWebImage
 
 protocol MovieCellDelegate {
-    func moveCellDidTapReadMore(_ cell: MovieCell)
+    func movieCellDidTapReadMore(_ cell: MovieCell)
+    func movieCellDidTapStar(_ cell: MovieCell)
 }
 
 class MovieCell: UITableViewCell {
@@ -30,6 +31,7 @@ class MovieCell: UITableViewCell {
     @IBOutlet weak fileprivate var readMoreButton: UIButton!
     @IBOutlet weak fileprivate var movieImage: UIImageView!
     @IBOutlet weak fileprivate var releaseDate: UILabel!
+    @IBOutlet weak fileprivate var starButton: UIButton!
 
     fileprivate var movie: Movie! { didSet {
         self.titleLabel.text = self.movie.headline
@@ -43,6 +45,8 @@ class MovieCell: UITableViewCell {
         } else {
             self.movieImage.image = nil
         }
+
+        self.starButton.setImage(self.movie.starred ? #imageLiteral(resourceName: "star-on") : #imageLiteral(resourceName: "star-off"), for: .normal)
     }}
 
     override func prepareForReuse() {
@@ -61,7 +65,11 @@ class MovieCell: UITableViewCell {
     }
 
     @IBAction func didTapReadMore() {
-        self.delegate.moveCellDidTapReadMore(self)
+        self.delegate.movieCellDidTapReadMore(self)
+    }
+
+    @IBAction func didTapStar() {
+        self.delegate.movieCellDidTapStar(self)
     }
 }
 

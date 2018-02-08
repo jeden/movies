@@ -14,6 +14,13 @@ protocol MovieCellDelegate {
 }
 
 class MovieCell: UITableViewCell {
+    fileprivate static let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        return dateFormatter
+    }()
+
     static let cellId = "movie-cell"
     private var delegate: MovieCellDelegate!
     private(set) var indexPath: IndexPath!
@@ -22,10 +29,12 @@ class MovieCell: UITableViewCell {
     @IBOutlet weak fileprivate var descriptionLabel: UILabel!
     @IBOutlet weak fileprivate var readMoreButton: UIButton!
     @IBOutlet weak fileprivate var movieImage: UIImageView!
+    @IBOutlet weak fileprivate var releaseDate: UILabel!
 
     fileprivate var movie: Movie! { didSet {
         self.titleLabel.text = self.movie.headline
         self.descriptionLabel.text = self.movie.synopsis
+        self.releaseDate.text = ExpandedMovieCell.dateFormatter.string(from: self.movie.releaseDate)
 
         // TODO: Take care of recycling and asynchronous images load
 
@@ -57,34 +66,5 @@ class MovieCell: UITableViewCell {
 }
 
 final class ExpandedMovieCell : MovieCell {
-    fileprivate static let dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
-        return dateFormatter
-    }()
-
     static let expandedCellId = "expanded-movie-cell"
-
-    fileprivate override var movie: Movie! { didSet {
-        self.releaseDate.text = ExpandedMovieCell.dateFormatter.string(from: self.movie.releaseDate)
-    }}
-
-
-    @IBOutlet weak private var releaseDate: UILabel!
-
-    @IBOutlet weak override fileprivate var titleLabel: UILabel! {
-        get { return super.titleLabel }
-        set { super.titleLabel = newValue }
-    }
-
-    @IBOutlet weak override fileprivate var descriptionLabel: UILabel! {
-        get { return super.descriptionLabel }
-        set { super.descriptionLabel = newValue }
-    }
-
-    @IBOutlet weak override fileprivate var movieImage: UIImageView! {
-        get { return super.movieImage }
-        set { super.movieImage = newValue }
-    }
 }

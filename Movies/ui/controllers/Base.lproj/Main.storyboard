@@ -84,10 +84,10 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="descriptionLabel" destination="jGh-Cq-Tij" id="vP1-6j-0gZ"/>
+                                    <outlet property="descriptionLabel" destination="jGh-Cq-Tij" id="EHC-0k-WZ0"/>
                                     <outlet property="movieImage" destination="BO3-0d-UXn" id="g2x-dI-JsU"/>
-                                    <outlet property="releaseDate" destination="Rri-ke-DfS" id="edv-wo-QSV"/>
-                                    <outlet property="titleLabel" destination="Dly-PO-TjX" id="gvE-Xy-4hZ"/>
+                                    <outlet property="releaseDate" destination="Rri-ke-DfS" id="sZb-ff-LAG"/>
+                                    <outlet property="titleLabel" destination="Dly-PO-TjX" id="ElD-um-yWX"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="movie-cell" rowHeight="96" id="H0m-on-dm5" customClass="MovieCell" customModule="Movies" customModuleProvider="target">
@@ -105,7 +105,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AnD-Dv-gAo">
-                                            <rect key="frame" x="76" y="8" width="283" height="21"/>
+                                            <rect key="frame" x="76" y="8" width="196" height="21"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -129,16 +129,28 @@
                                                 <action selector="didTapReadMore" destination="H0m-on-dm5" eventType="touchUpInside" id="3jW-Pm-AsY"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aug 15, 2018" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYy-jX-bhH">
+                                            <rect key="frame" x="274" y="8" width="85" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="loG-xF-AgX"/>
+                                                <constraint firstAttribute="width" constant="85" id="sA6-Ad-Hmt"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="UYy-jX-bhH" firstAttribute="leading" secondItem="AnD-Dv-gAo" secondAttribute="trailing" constant="2" id="0JN-IE-6Im"/>
                                         <constraint firstAttribute="bottom" secondItem="LUn-Cc-FNk" secondAttribute="bottom" constant="6.5" id="2j9-43-heZ"/>
-                                        <constraint firstAttribute="trailing" secondItem="AnD-Dv-gAo" secondAttribute="trailing" constant="16" id="3Qo-15-FlW"/>
+                                        <constraint firstItem="UYy-jX-bhH" firstAttribute="centerY" secondItem="AnD-Dv-gAo" secondAttribute="centerY" id="5fa-em-f4H"/>
                                         <constraint firstItem="xxB-PA-6CZ" firstAttribute="leading" secondItem="rte-pN-Dpp" secondAttribute="leading" constant="8" id="5kj-K4-fQ8"/>
                                         <constraint firstItem="ULP-jM-Ele" firstAttribute="trailing" secondItem="rte-pN-Dpp" secondAttribute="trailingMargin" id="6dl-DM-ZFv"/>
                                         <constraint firstItem="AnD-Dv-gAo" firstAttribute="top" secondItem="rte-pN-Dpp" secondAttribute="top" constant="8" id="ASc-WS-ZXn"/>
                                         <constraint firstItem="LUn-Cc-FNk" firstAttribute="top" secondItem="ULP-jM-Ele" secondAttribute="bottom" constant="3" id="C6d-Nq-kNa"/>
                                         <constraint firstItem="LUn-Cc-FNk" firstAttribute="leading" secondItem="xxB-PA-6CZ" secondAttribute="trailing" constant="8" id="Npu-uN-zgu"/>
                                         <constraint firstItem="ULP-jM-Ele" firstAttribute="leading" secondItem="xxB-PA-6CZ" secondAttribute="trailing" constant="8" id="Q2B-cM-9Gs"/>
+                                        <constraint firstAttribute="trailing" secondItem="UYy-jX-bhH" secondAttribute="trailing" constant="16" id="U56-rV-iR8"/>
                                         <constraint firstItem="ULP-jM-Ele" firstAttribute="top" secondItem="AnD-Dv-gAo" secondAttribute="bottom" id="d6a-Tq-PeZ"/>
                                         <constraint firstItem="AnD-Dv-gAo" firstAttribute="leading" secondItem="xxB-PA-6CZ" secondAttribute="trailing" constant="8" id="fyY-eI-k4f"/>
                                         <constraint firstAttribute="trailing" secondItem="LUn-Cc-FNk" secondAttribute="trailing" constant="16" id="hQx-7O-A4A"/>
@@ -149,6 +161,7 @@
                                     <outlet property="descriptionLabel" destination="ULP-jM-Ele" id="fly-za-qTT"/>
                                     <outlet property="movieImage" destination="xxB-PA-6CZ" id="lIH-L2-jKC"/>
                                     <outlet property="readMoreButton" destination="LUn-Cc-FNk" id="FY9-GH-fau"/>
+                                    <outlet property="releaseDate" destination="UYy-jX-bhH" id="Hj0-is-yAW"/>
                                     <outlet property="titleLabel" destination="AnD-Dv-gAo" id="mFn-IW-mSi"/>
                                 </connections>
                             </tableViewCell>
